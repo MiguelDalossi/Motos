@@ -21,18 +21,17 @@ function MotoCrud() {
   const [modalExcluir, setModalExcluir] = useState(false);
   const [modalDetalhes, setModalDetalhes] = useState(false);
 
-  // Função genérica para abrir modal
+  
   const abrirModal = (setModal) => () => setModal(true);
-  // Função genérica para fechar modal
   const fecharModal = (setModal) => () => setModal(false);
 
-  // Handle input change
+  
   const handleChange = e => {
     const { name, value } = e.target;
     setMotoSelecionado(prev => ({ ...prev, [name]: value }));
   };
 
-  // Selecionar moto e abrir o modal certo
+  
   const selecionarMoto = (moto, acao) => {
     setMotoSelecionado(moto);
     if (acao === 'Editar') setModalEditar(true);
@@ -40,7 +39,7 @@ function MotoCrud() {
     else if (acao === 'Detalhes') setModalDetalhes(true);
   };
 
-  // Buscar motos da API
+  //Buscar Moto
   const getMotos = () => {
     axios.get(baseUrl)
       .then(res => setMotos(res.data))
@@ -49,7 +48,6 @@ function MotoCrud() {
 
   // Adicionar moto
   const postMoto = () => {
-    // Remove id para post
     const novo = { ...motoSelecionado };
     delete novo.id;
 
@@ -126,7 +124,6 @@ function MotoCrud() {
         </tbody>
       </table>
 
-      {/* Modal Incluir */}
       <Modal isOpen={modalIncluir} toggle={fecharModal(setModalIncluir)}>
         <ModalHeader toggle={fecharModal(setModalIncluir)}>Novo Moto</ModalHeader>
         <ModalBody>
@@ -138,7 +135,6 @@ function MotoCrud() {
         </ModalFooter>
       </Modal>
 
-      {/* Modal Editar */}
       <Modal isOpen={modalEditar} toggle={fecharModal(setModalEditar)}>
         <ModalHeader toggle={fecharModal(setModalEditar)}>Editar Moto</ModalHeader>
         <ModalBody>
@@ -150,7 +146,6 @@ function MotoCrud() {
         </ModalFooter>
       </Modal>
 
-      {/* Modal Excluir */}
       <Modal isOpen={modalExcluir} toggle={fecharModal(setModalExcluir)}>
         <ModalHeader toggle={fecharModal(setModalExcluir)}>Excluir Moto</ModalHeader>
         <ModalBody>
@@ -162,7 +157,6 @@ function MotoCrud() {
         </ModalFooter>
       </Modal>
 
-      {/* Modal Detalhes */}
       <Modal isOpen={modalDetalhes} toggle={fecharModal(setModalDetalhes)}>
         <ModalHeader toggle={fecharModal(setModalDetalhes)}>Detalhes da Moto</ModalHeader>
         <ModalBody>

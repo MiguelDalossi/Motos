@@ -1,13 +1,14 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import MotoCrud from './components/MotoCrud';
 import ClienteCrud from './components/ClienteCrud';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Header from './components/Header';
 import EncomendaCrud from './components/EncomendaCrud';
+import Header from './components/Header';
+import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -15,10 +16,34 @@ function App() {
       <Header />
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={<Navigate to="/motos" />} />
-          <Route path="/motos" element={<MotoCrud />} />
-          <Route path="/clientes" element={<ClienteCrud />} />
-          <Route path="/encomendas" element={<EncomendaCrud />} />
+          {/* Rota pública */}
+          <Route path="/" element={<Login />} />
+
+          {/* Rotas privadas */}
+          <Route
+            path="/motos"
+            element={
+              <PrivateRoute>
+                <MotoCrud />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/clientes"
+            element={
+              <PrivateRoute>
+                <ClienteCrud />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/encomendas"
+            element={
+              <PrivateRoute>
+                <EncomendaCrud />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </div>
     </Router>

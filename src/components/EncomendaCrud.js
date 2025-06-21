@@ -165,7 +165,6 @@ function EncomendaCrud() {
         </tbody>
       </table>
 
-      {/* Modal Inclusão */}
       <Modal isOpen={modalIncluir}>
         <ModalHeader>Nova Encomenda</ModalHeader>
         <ModalBody>
@@ -242,7 +241,6 @@ function EncomendaCrud() {
         </ModalFooter>
       </Modal>
 
-      {/* Modal Detalhes */}
       <Modal isOpen={modalDetalhes}>
         <ModalHeader>Detalhes da Encomenda</ModalHeader>
         <ModalBody>

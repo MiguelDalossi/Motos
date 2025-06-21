@@ -24,7 +24,6 @@ function ClienteCrud() {
   const [modalExcluir, setModalExcluir] = useState(false);
   const [modalDetalhes, setModalDetalhes] = useState(false);
 
-  // Limpa o cliente selecionado e abre o modal de inclusão
   const abrirModalIncluir = () => {
     setClienteSelecionado({
       id: 0,
@@ -138,7 +137,6 @@ function ClienteCrud() {
         </tbody>
       </table>
 
-      {/* Modal Incluir */}
       <Modal isOpen={modalIncluir} toggle={fecharModal(setModalIncluir)}>
         <ModalHeader toggle={fecharModal(setModalIncluir)}>Novo Cliente</ModalHeader>
         <ModalBody>
@@ -150,7 +148,6 @@ function ClienteCrud() {
         </ModalFooter>
       </Modal>
 
-      {/* Modal Editar */}
       <Modal isOpen={modalEditar} toggle={fecharModal(setModalEditar)}>
         <ModalHeader toggle={fecharModal(setModalEditar)}>Editar Cliente</ModalHeader>
         <ModalBody>
@@ -162,7 +159,6 @@ function ClienteCrud() {
         </ModalFooter>
       </Modal>
 
-      {/* Modal Excluir */}
       <Modal isOpen={modalExcluir} toggle={fecharModal(setModalExcluir)}>
         <ModalHeader toggle={fecharModal(setModalExcluir)}>Excluir Cliente</ModalHeader>
         <ModalBody>
@@ -174,7 +170,6 @@ function ClienteCrud() {
         </ModalFooter>
       </Modal>
 
-      {/* Modal Detalhes */}
       <Modal isOpen={modalDetalhes} toggle={fecharModal(setModalDetalhes)}>
         <ModalHeader toggle={fecharModal(setModalDetalhes)}>Detalhes do Cliente</ModalHeader>
         <ModalBody>
