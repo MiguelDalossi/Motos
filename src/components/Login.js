@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import background from '../assets/fundo.png';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -23,34 +24,56 @@ function Login() {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100 bg-light">
-      <div className="card shadow p-4" style={{ width: '100%', maxWidth: '400px' }}>
-        <h3 className="text-center mb-4">Login</h3>
-        <form onSubmit={handleLogin}>
-          <div className="mb-3">
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Senha"
-              value={senha}
-              onChange={e => setSenha(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="btn btn-primary w-100">Entrar</button>
-        </form>
-      </div>     
-    </div>
+    <>
+      {/* Fundo da tela inteira */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          backgroundImage: `url(${background})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: -1
+        }}
+      ></div>
+
+      {/* Container do formulário */}
+      <div
+        className="align-items-center justify-content-center"
+        style={{ minHeight: '100vh', display: 'flex' }}
+      >
+        <div className="card shadow p-4" style={{ width: '100%', maxWidth: '400px', margin: '0 auto' }}>
+          <h3 className="text-center mb-4">Login</h3>
+          <form onSubmit={handleLogin}>
+            <div className="mb-3">
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Senha"
+                value={senha}
+                onChange={e => setSenha(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary w-100">Entrar</button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 }
 
